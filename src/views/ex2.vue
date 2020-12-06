@@ -12,7 +12,6 @@
                 v-on:point-changed="onPointChange"> 
     </pointInput>
     <button v-on:click="calculateEx1">Izračunaj</button>
-    <p>V = {{V}} </p>
     <p>Ex = {{Ex}} Ey = {{Ey}}</p>
   </div>
 </template>
@@ -34,30 +33,30 @@ export default {
     return{
       pCharges:[
         {
-          Q: 1.5e-7,
-          x:7,
+          Q:-1.2e-8,
+          x:5,
           y:2
         },
         {
-          Q: 1.1e-7,
-          x:21,
-          y:11
+          Q: 1.4e-8,
+          x:22,
+          y:8
         },
         {
-          Q: -1.3e-7,
-          x:13,
-          y:20
+          Q: -1.5e-8,
+          x:10,
+          y:19
         }
       ],
       V:0,
       Ex:0,
       Ey:0,
       T:{
-        x:3,
-        y:12
+        x:2,
+        y:11
       },
       exTitle:"Naloga 2",
-      exText: "Določite V in E. Izvori so tri naelektrene premice:"
+      exText: "Določite E. Izvori so tri naelektrene premice (ležijo v pravokotno na xy ravnino):"
     }
   },
   methods: {
@@ -68,10 +67,9 @@ export default {
       this.$data.T[name] = value;
     },
     calculateEx1: function () {
-      let i,r,Tx,Ty,Qx,Qy,Qi,Etemp,Ex,Ey,Vtemp;
+      let i,r,Tx,Ty,Qx,Qy,Qi,Etemp,Ex,Ey;
       Tx = this.$data.T.x;
       Ty = this.$data.T.y;
-      Vtemp=0;
       Ex = 0;
       Ey = 0;
       for (i = 0; i < 3; i++) {
@@ -79,12 +77,10 @@ export default {
         Qx = this.$data.pCharges[i].x;
         Qy = this.$data.pCharges[i].y;
         r = Math.sqrt((Tx-Qx)**2+(Ty-Qy)**2);
-        Vtemp = Vtemp + Qi/(4*Math.PI*8.854187*(10**(-12))*r)
-        Etemp = Qi/(4*Math.PI*8.854187*(10**(-12))*r**3)
+        Etemp = Qi/(2*Math.PI*8.854187*(10**(-12))*r**2)
         Ex = Ex + Etemp*(Tx-Qx);
         Ey = Ey + Etemp*(Ty-Qy);
       }
-      this.$data.V = Vtemp;
       this.$data.Ex = Ex;
       this.$data.Ey = Ey;
     }
