@@ -56,7 +56,7 @@ export default {
         x:3,
         y:12
       },
-      exTitle:"Naloga 1",
+      exTitle:"1. naloga",
       exText: "Določite V in E. Izvori so tri točkaste elektrine:"
     }
   },

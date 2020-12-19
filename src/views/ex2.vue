@@ -55,7 +55,7 @@ export default {
         x:2,
         y:11
       },
-      exTitle:"Naloga 2",
+      exTitle:"2. naloga",
       exText: "Določite E. Izvori so tri naelektrene premice (ležijo v pravokotno na xy ravnino):"
     }
   },
