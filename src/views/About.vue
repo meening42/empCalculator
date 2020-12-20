@@ -1,5 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>Rešitve nalog pri Teoriji elektromagnetskega polja</h1>
+    <p></p>
   </div>
 </template>
