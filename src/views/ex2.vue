@@ -15,6 +15,9 @@
       v-on:point-changed="onPointChange"
     >
     </pointInput>
+    <keep-alive>
+    <graph2d :pCharges="pCharges" v-bind:T="T"></graph2d>
+    </keep-alive>
     <button v-on:click="calculateEx1">Izračunaj</button>
     <p>Ex = {{ Ex }} Ey = {{ Ey }}</p>
   </div>
@@ -24,6 +27,7 @@
 import pChargeInput from "../components/pChargeInput";
 import pointInput from "../components/pointInput";
 import ExerciseHeader from "../components/ExerciseHeader";
+import graph2d from "../components/graph2d.vue";
 
 export default {
   name: "ex2",
@@ -31,6 +35,7 @@ export default {
     pChargeInput,
     pointInput,
     ExerciseHeader,
+    graph2d,
   },
   data: function() {
     return {
@@ -66,9 +71,11 @@ export default {
   methods: {
     onChargeChange(name, value, index) {
       this.$data.pCharges[index][name] = value;
+      this.$data.pCharges = [...this.$data.pCharges];
     },
     onPointChange(name, value) {
       this.$data.T[name] = value;
+      this.$data.T = { ...this.$data.T };
     },
     calculateEx1: function() {
       let i, r, Tx, Ty, Qx, Qy, Qi, Etemp, Ex, Ey;
@@ -85,8 +92,8 @@ export default {
         Ex = Ex + Etemp * (Tx - Qx);
         Ey = Ey + Etemp * (Ty - Qy);
       }
-      this.$data.Ex = Ex;
-      this.$data.Ey = Ey;
+      this.$data.Ex = (Math.round(Ex * 1000) / 1000).toFixed(3);
+      this.$data.Ey = (Math.round(Ey * 1000) / 1000).toFixed(3);
     },
   },
 };
