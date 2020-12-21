@@ -1,6 +1,9 @@
 <template>
   <div class="about">
-    <h1>Rešitve nalog pri Teoriji elektromagnetskega polja</h1>
+    <h2>Kalkulator za preverjanje vaj pri predmetu Teorija elektro-magnetskega polja</h2>
     <p></p>
   </div>
 </template>
+
+<style>
+</style>
